@@ -1,6 +1,7 @@
 ﻿using Request.Domain.Entitites.Users;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,9 @@ namespace Request.Domain.Entitites.Request
 {
     public class Requests
     {
+        [Key]
         public int RequestId { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public string Message { get; set; }
 
         // Navigation property

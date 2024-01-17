@@ -1,0 +1,6 @@
+@Wood.API_HostAddress = http://localhost:5208
+
+GET {{Wood.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
