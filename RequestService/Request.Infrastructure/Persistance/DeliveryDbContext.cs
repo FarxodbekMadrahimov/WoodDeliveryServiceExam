@@ -21,7 +21,7 @@ namespace Request.Infrastructure.Persistance
             {
                 if (databaseCreator is null)
                 {
-                    throw new Exception("Database Not Found!");
+                    throw new Exception("Database Not Foundd!");
                 }
 
                 if (!databaseCreator.CanConnect())
