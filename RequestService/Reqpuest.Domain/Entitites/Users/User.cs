@@ -17,7 +17,7 @@ namespace Request.Domain.Entitites.Users
 
         [Key]
         public int UserId { get; set; }
-        public string FirsrName { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string? UserName { get; set; }
         public string? Password { get; set; }
@@ -30,7 +30,7 @@ namespace Request.Domain.Entitites.Users
         // Navigation properties
         
         [ForeignKey("ProductId")]
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
         public ICollection<Requests> Requests { get; set; }
         public ICollection<Order> Orders { get; set; }
     }

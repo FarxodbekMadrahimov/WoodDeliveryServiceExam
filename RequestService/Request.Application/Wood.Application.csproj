@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +18,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Reqpuest.Domain\Wood.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Usecases\Orders\Commands\" />
+    <Folder Include="Usecases\Orders\Handlers\" />
+    <Folder Include="Usecases\Orders\Queries\" />
+    <Folder Include="Usecases\Products\Commands\" />
+    <Folder Include="Usecases\Products\Handlers\" />
+    <Folder Include="Usecases\Products\Queries\" />
+    <Folder Include="Usecases\Requests\Handlers\" />
+    <Folder Include="Usecases\Requests\Commands\" />
+    <Folder Include="Usecases\Requests\Queries\" />
   </ItemGroup>
 
 </Project>
