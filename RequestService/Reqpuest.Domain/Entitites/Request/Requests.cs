@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Request.Domain.Entitites.Request
 {
-    public class Requests
+    public class Requesting
     {
         [Key]
         public int RequestId { get; set; }

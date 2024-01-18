@@ -21,15 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Usecases\Orders\Commands\" />
-    <Folder Include="Usecases\Orders\Handlers\" />
-    <Folder Include="Usecases\Orders\Queries\" />
     <Folder Include="Usecases\Products\Commands\" />
     <Folder Include="Usecases\Products\Handlers\" />
     <Folder Include="Usecases\Products\Queries\" />
-    <Folder Include="Usecases\Requests\Handlers\" />
-    <Folder Include="Usecases\Requests\Commands\" />
-    <Folder Include="Usecases\Requests\Queries\" />
   </ItemGroup>
 
 </Project>

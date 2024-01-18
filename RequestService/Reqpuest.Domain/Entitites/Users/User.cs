@@ -31,7 +31,7 @@ namespace Request.Domain.Entitites.Users
         
         [ForeignKey("ProductId")]
         public Product? Product { get; set; }
-        public ICollection<Requests> Requests { get; set; }
+        public ICollection<Requesting> Requests { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
 

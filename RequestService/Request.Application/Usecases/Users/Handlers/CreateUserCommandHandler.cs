@@ -10,7 +10,7 @@ using Wood.Application.Usecases.Users.Commands;
 
 namespace Wood.Application.Usecases.Users.Handlers
 {
-    public class CreateUserCommandHandler: IRequestHandler<CreateUserCommand,int>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand,int>
     {
         private readonly IDeliveryDbContext _context;
         public CreateUserCommandHandler(IDeliveryDbContext context)
