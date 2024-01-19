@@ -37,7 +37,7 @@ namespace Wood.API.Controllers
 
             return Ok(classes);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async ValueTask<IActionResult> DeleteAsync(int classId)
         {
             DeleteRequestCommand @class = new DeleteRequestCommand()

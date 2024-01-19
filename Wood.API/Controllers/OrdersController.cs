@@ -37,7 +37,7 @@ namespace Wood.API.Controllers
 
             return Ok(classes);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async ValueTask<IActionResult> DeleteAsync(int classId)
         {
             DeleteOrderCommand @class = new DeleteOrderCommand()
@@ -50,7 +50,7 @@ namespace Wood.API.Controllers
             return Ok(result);
 
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public async ValueTask<IActionResult> GetByIdAsync(int Id)
         {
             GetOrderByIdQuery doctor = new GetOrderByIdQuery()
