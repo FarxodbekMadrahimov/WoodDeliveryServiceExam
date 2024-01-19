@@ -2,15 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Request.Application.Absreactions;
 using Request.Domain.Entitites.deliver;
-using Request.Domain.Entitites.Request;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wood.Application.Usecases.Orders.Queries;
-using Wood.Application.Usecases.Requests.Queries;
-using Wood.Application.Usecases.Users.Queries;
 
 namespace Wood.Application.Usecases.Orders.Handlers
 {
@@ -27,7 +19,7 @@ namespace Wood.Application.Usecases.Orders.Handlers
         {
             Order? ambulanceInfo = await _context.order.FirstOrDefaultAsync(x => x.OrderId == request.Id, cancellationToken);
 
-  
+
 
             return ambulanceInfo;
         }

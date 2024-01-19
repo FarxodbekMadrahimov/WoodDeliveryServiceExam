@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  wood.api:
+    image: ${DOCKER_REGISTRY-}woodapi
+    build:
+      context: .
+      dockerfile: Wood.API\Dockerfile

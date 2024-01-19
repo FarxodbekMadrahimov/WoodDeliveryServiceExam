@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -22,6 +23,7 @@ namespace Wood.API.Controllers
             _mediator = mediator;
             
         }
+
         [HttpPost]
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateUserCommand users)
         {

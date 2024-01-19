@@ -1,4 +1,5 @@
-﻿namespace JWTAuthLesson.AuthenticationFolder
+﻿
+namespace JWTAuthLesson.AuthenticationFolder
 {
     public enum Permission
     {
