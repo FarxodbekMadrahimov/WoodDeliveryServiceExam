@@ -25,7 +25,10 @@ namespace Wood.Application.Usecases.Users.Handlers
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
+                UserName = request.UserName,
+                Password = request.Password,
                 Email = request.Email,
+
                 PhoneNumber = request.PhoneNumber,
                 Address  = request.Address,
             };

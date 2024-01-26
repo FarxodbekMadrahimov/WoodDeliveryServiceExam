@@ -24,7 +24,10 @@ namespace Wood.Application.Usecases.Requests.Handlers
 
             Requesting info = new Requesting()
             {
-                UserId = request.UserId,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Email = request.Email,
+                PhoneNumber = request.PhoneNumber,
                 Message = request.Message,
             };
             await _context.requests.AddAsync(info, cancellationToken);

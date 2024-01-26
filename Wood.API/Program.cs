@@ -1,21 +1,17 @@
-using Azure.Core;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
+using Microsoft.EntityFrameworkCore;
 using Wood.Application;
 using Request.Infrastructure;
-using Request.Application.Absreactions;
-using Request.Infrastructure.Persistance;
-using FluentAssertions.Common;
 using System.Reflection;
 using MediatR;
-using JWT.Data;
-using JWT.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using JWT.Data;
+using JWT.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddInfrastructure(builder.Configuration);
     
@@ -25,7 +21,16 @@ builder.Services.AddAplications();
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
-builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
@@ -89,24 +94,26 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
 
-static TokenValidationParameters GetTokenValidationParameters(IConfiguration configuration)
-{
-    return new TokenValidationParameters()
+    static TokenValidationParameters GetTokenValidationParameters(IConfiguration configuration)
     {
-        ValidateIssuer = true,
-        ValidIssuer = configuration["JWT:Issuer"],
-        ValidateAudience = true,
-        ValidAudience = configuration["JWT:Audience"],
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"])),
-        ClockSkew = TimeSpan.Zero,
-    };
-}
+        return new TokenValidationParameters()
+        {
+            ValidateIssuer = true,
+            ValidIssuer = configuration["JWT:Issuer"],
+            ValidateAudience = true,
+            ValidAudience = configuration["JWT:Audience"],
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"])),
+            ClockSkew = TimeSpan.Zero,
+        };
+    } 
+    

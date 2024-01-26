@@ -13,7 +13,8 @@ namespace Wood.Application
         public static IServiceCollection AddAplications(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
-             
+            
+
 
             return services;
         }

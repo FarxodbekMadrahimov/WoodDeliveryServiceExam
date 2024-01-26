@@ -1,4 +1,6 @@
 ﻿
+
+
 using JWT.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -26,8 +28,7 @@ namespace Wood.API.Controllers
         }
 
         [HttpPost]
-        [PermissionFilter(permission: "CreateUser")]
-        [LoggerFilter]
+
         public async ValueTask<IActionResult> PostAsync([FromForm] CreateUserCommand users)
         {
             int result = await _mediator.Send(users);
@@ -44,16 +45,14 @@ namespace Wood.API.Controllers
             return Ok(classes);
         }
         [HttpPut]
-        [PermissionFilter(permission: "CreateUser")]
-        [LoggerFilter]
+
         public async ValueTask<IActionResult> UpdateAsync([FromForm] UpdateUserCommand user)
         {
             int result = await _mediator.Send(user);
             return Ok(result);
         }
         [HttpDelete("{id}")]
-        [PermissionFilter(permission: "CreateUser")]
-        [LoggerFilter]
+
         public async ValueTask<IActionResult> DeleteAsync(int classId)
         {
             DeleteUsersCommand @class = new DeleteUsersCommand()
@@ -67,8 +66,7 @@ namespace Wood.API.Controllers
         }
         
         [HttpGet("{id}")]
-        [PermissionFilter(permission: "CreateUser")]
-        [LoggerFilter]
+
         public async ValueTask<IActionResult> GetByIdAsync(int Id)
         {
             GetUserByIdQuery doctor = new GetUserByIdQuery()

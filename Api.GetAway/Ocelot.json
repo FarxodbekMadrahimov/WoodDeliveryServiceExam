@@ -3,7 +3,7 @@
     {
       // Employee.API 7136
       "DownstreamPathTemplate": "/api/Users",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -15,7 +15,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Users/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -28,11 +28,11 @@
     {
       // Employee.API 7136
       "DownstreamPathTemplate": "/api/Orders",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7169
+          "Port": 5210
         }
       ],
       "UpstreamPathTemplate": "/Orders",
@@ -40,24 +40,24 @@
     },
     {
       "DownstreamPathTemplate": "/api/Orders/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7169
+          "Port": 5210
         }
       ],
-      "UpstreamPathTemplate": "/Requests/{id}",
+      "UpstreamPathTemplate": "/Orders/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
       // Employee.API 7136
       "DownstreamPathTemplate": "/api/Requests",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7144
+          "Port": 5209
         }
       ],
       "UpstreamPathTemplate": "/Requests",
@@ -65,11 +65,11 @@
     },
     {
       "DownstreamPathTemplate": "/api/Requests/{id}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7144
+          "Port": 5209
         }
       ],
       "UpstreamPathTemplate": "/Requests/{id}",

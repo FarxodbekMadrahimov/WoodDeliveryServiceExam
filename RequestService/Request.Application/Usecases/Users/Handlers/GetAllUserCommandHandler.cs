@@ -21,7 +21,10 @@ namespace Wood.Application.Usecases.Users.Handlers
         }
         public async Task<IEnumerable<User>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            List<User> result = await _context.user.ToListAsync(cancellationToken);
+            List<User> result = await _context.user
+                .Include(x => x.Product)
+                .ThenInclude(x => x.Orders)
+                .ToListAsync(cancellationToken);
             if (result == null)
                 throw new Exception();
             return result;

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Request.Infrastructure.Persistance;
 
@@ -11,9 +12,11 @@ using Request.Infrastructure.Persistance;
 namespace Request.Infrastructure.Migrations
 {
     [DbContext(typeof(DeliveryDbContext))]
-    partial class DeliveryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240122102758_MyMigration")]
+    partial class MyMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,27 +144,16 @@ namespace Request.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestId"));
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("RequestId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("requests");
                 });
@@ -244,6 +236,15 @@ namespace Request.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Request.Domain.Entitites.Request.Requesting", b =>
+                {
+                    b.HasOne("Request.Domain.Entitites.Users.User", "User")
+                        .WithMany("Requests")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Request.Domain.Entitites.Users.User", b =>
                 {
                     b.HasOne("Request.Domain.Entitites.Products.Product", "Product")
@@ -280,6 +281,8 @@ namespace Request.Infrastructure.Migrations
             modelBuilder.Entity("Request.Domain.Entitites.Users.User", b =>
                 {
                     b.Navigation("Orders");
+
+                    b.Navigation("Requests");
                 });
 #pragma warning restore 612, 618
         }

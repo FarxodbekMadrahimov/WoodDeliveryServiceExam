@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Request.Domain.Entitites.deliver;
@@ -14,6 +15,7 @@ namespace Wood.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [EnableCors("AllowSpecificOrigin")]
     public class RequestsController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -23,7 +25,7 @@ namespace Wood.API.Controllers
             _mediator = mediator;
         }
         [HttpPost]
-        public async ValueTask<IActionResult> PostAsync([FromForm] CreateRequestCommand rq)
+        public async ValueTask<IActionResult> PostAsync(CreateRequestCommand rq)
         {
             int result = await _mediator.Send(rq);
 

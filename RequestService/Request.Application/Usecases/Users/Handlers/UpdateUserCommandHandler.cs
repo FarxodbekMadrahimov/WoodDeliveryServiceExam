@@ -29,6 +29,8 @@ namespace Wood.Application.Usecases.Users.Handlers
             user.UserId = request.Id;
             user.FirstName = request.FirstName;
             user.LastName = request.LastName;
+            user.UserName = request.UserName;
+            user.Password = request.Password;
             user.Email = request.Email;
             user.PhoneNumber = request.PhoneNumber;
             user.Address = request.Address;

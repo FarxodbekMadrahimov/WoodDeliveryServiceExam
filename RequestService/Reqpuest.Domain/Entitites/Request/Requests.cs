@@ -13,12 +13,13 @@ namespace Request.Domain.Entitites.Request
     {
         [Key]
         public int RequestId { get; set; }
-        public int? UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+
+        public string PhoneNumber { get; set; }
         public string Message { get; set; }
 
-        // Navigation property
-        [ForeignKey("UserId")]
-        public User User { get; set; }
     }
 
 }

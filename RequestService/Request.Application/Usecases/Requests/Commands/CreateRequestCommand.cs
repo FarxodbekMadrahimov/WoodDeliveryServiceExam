@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Wood.Application.Usecases.Requests.Commands
 {
-    public class CreateRequestCommand : IRequest<int>
+    public class CreateRequestCommand : Request.Domain.Entitites.Request.Requesting, IRequest<int>
     {
-        public int UserId { get; set; }
-        public string Message { get; set; }
+        
+       
     }
 }
